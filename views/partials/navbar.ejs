@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+    <a href="/" class="navbar-brand d-flex align-items-center text-center py-0 px-4 px-lg-5">
+        <h1 class="m-0 text-primary">Pawsitively</h1>
+    </a>
+    <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto p-4 p-lg-0">
+            <a href="/" class="nav-item nav-link">Home</a>
+            <a href="/services" class="nav-item nav-link">Service List</a>
+            <a href="/service-categories" class="nav-item nav-link">Service Categories</a>
+            <a href="/caretakers" class="nav-item nav-link">Care Providers</a>
+            <% if (!currentUser) { %>
+                <a href="/login" class="nav-item nav-link">Login</a>
+            <% } else { %>
+                <% if (currentUser.usertype == 'provider') { %>
+                    <a href="/addService" class="nav-item nav-link">Add Service</a>
+                <% } %>
+                <a href="/logout" class="nav-item nav-link">Logout</a>
+            <% } %> 
+        </div>
+    </div>
+</nav>

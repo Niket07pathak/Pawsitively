@@ -1,0 +1,52 @@
+<% layout('layouts/boilerplate') %>
+
+    <head>
+        <style>
+            .gradient-custom {
+                background: linear-gradient(to right bottom, rgb(179, 250, 189), rgb(127, 177, 229));
+            }
+
+            .custom-card {
+                width: 700px;
+                height: 500px;
+
+            }
+        </style>
+    </head>
+
+    <div class="container-xxl bg-white p-0">
+        <div class="container-xxl py-5 bg-dark page-header">
+            <div class="container my-5 pt-5 pb-4">
+                <h1 class="display-3 text-white mb-3 animated slideInDown">Care Providers</h1>
+            </div>
+        </div>
+        <div class="container-fluid bg-primary mb-5 wow fadeIn" data-wow-delay="0.1s" style="padding: 35px;">
+            <form action="/caretakers" method="post">
+            <div class="container">
+                <div class="row g-2">
+                    <div class="col-md-8">
+                        <input type="text" class="form-control border-0" placeholder="Keyword" name="keyword"/>
+                    </div>
+                    <div class="col-md-4">
+                        <button type="submit" class="btn btn-dark border-0 w-100">Search</button>
+                    </div>
+                </div>
+            </div>
+            </form>
+        </div>
+        <div class="row g-2 mb-5">
+            <% for( let i = 0; i < data.length; i++ ) { %>
+                <div class="col-md-3">
+                    <div class="gradient-custom text-center text-white me-1"
+                        style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem; border-bottom-right-radius: .5rem; border-top-right-radius: .5rem;">
+                        <img src=<%= data[i].img_url %> alt="Avatar"
+                            class="rounded-circle my-5 img-fluid" style="width: 175px;" />
+    
+                        <h4><%= data[i].name %></h4>
+                        <h6><%= data[i].designation %></h6>
+                        <a class="btn btn-primary py-3 px-5 my-3" href="/caretakers/<%= data[i]._id %>">View Profile</a>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </div>
